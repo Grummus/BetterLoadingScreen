@@ -3,4 +3,9 @@
 
 Replaces the default VRChat world loading screen with something similar to the old warp tunnel
 
-Still under construction
+Still Under Construction
+
+
+**Download Here:**  
+https://github.com/Grummus/BetterLoadingScreen/releases/
+
