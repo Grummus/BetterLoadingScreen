@@ -29,14 +29,9 @@ namespace OldLoadingScreen
 {
     public class OldLoadingScreenMod : MelonMod
     {
-        
-        private AudioClip partiallyOfflineAudio;
-        /*
+        // private GameObject partiallyOffline;
 
-        private GameObject partiallyOffline;
-        */
         private GameObject cavernDry;
-        private AudioSource cavernDrySource;
         private GameObject loadScreenPrefab;
 
         private AssetBundle assets;
@@ -92,8 +87,6 @@ namespace OldLoadingScreen
             InfoPanel.active = false;
             SkyCube.active = false;
             bubbles.active = false;
-            // AudioSource menuAudioComp = originalMenuAudio.GetComponent<AudioSource>();
-            // menuAudioComp.clip = cavernDryAudio;
             originalLoadingAudio.active = false;
             originalStartScreenAudio.active = false;
             originalStartScreenSkyCube.active = false;
@@ -117,7 +110,6 @@ namespace OldLoadingScreen
             MelonLogger.Log("Creating " + obj.name);
             var UIRoot = GameObject.Find(rootDest);
             var requestedParent = UIRoot.transform.Find(parent);
-            // var requestedParent = UIRoot.transform;
             var newObject = Object.Instantiate(obj, requestedParent, false).Cast<GameObject>();
             newObject.transform.parent = requestedParent;
             newObject.transform.localScale = scale;
