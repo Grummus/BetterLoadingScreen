@@ -82,8 +82,6 @@ namespace OldLoadingScreen
             loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
             cavernDry = CreateGameObject(cavernDry, new Vector3(400, 400, 400), "UserInterface/", "LoadingBackground_TealGradient_Music");
 
-
-
             InfoPanel.active = false;
             SkyCube.active = false;
             bubbles.active = false;
@@ -91,18 +89,6 @@ namespace OldLoadingScreen
             originalStartScreenAudio.active = false;
             originalStartScreenSkyCube.active = false;
 
-        }
-
-        private AudioSource CreateAudioSource(AudioClip clip, GameObject parent)
-        {
-            var source = parent.AddComponent<AudioSource>();
-            source.clip = clip;
-            source.spatialize = false;
-            source.volume = 100;
-            source.loop = false;
-            source.playOnAwake = false;
-            source.outputAudioMixerGroup = VRCAudioManager.field_Private_Static_VRCAudioManager_0.uiGroup;
-            return source;
         }
 
         private GameObject CreateGameObject(GameObject obj, Vector3 scale, String rootDest, String parent)
