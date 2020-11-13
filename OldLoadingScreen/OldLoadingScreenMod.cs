@@ -21,7 +21,7 @@ using VRC;
 using VRC.Core;
 // using VRCSDK2;
 
-[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.5.1", "Grummus")]
+[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.6.0", "Grummus")]
 [assembly: MelonGame("VRChat", "VRChat")]
 
 
@@ -33,6 +33,7 @@ namespace OldLoadingScreen
 
         private GameObject cavernDry;
         private GameObject loadScreenPrefab;
+        private GameObject stars;
 
         private AssetBundle assets;
 
@@ -64,6 +65,7 @@ namespace OldLoadingScreen
 
             CreateGameObjects();
         }
+
 
         private void CreateGameObjects()
         {
