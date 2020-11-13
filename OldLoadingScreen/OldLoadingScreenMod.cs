@@ -21,7 +21,7 @@ using VRC;
 using VRC.Core;
 // using VRCSDK2;
 
-[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.6.0", "Grummus")]
+[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.6.1", "Grummus")]
 [assembly: MelonGame("VRChat", "VRChat")]
 
 
@@ -86,7 +86,7 @@ namespace OldLoadingScreen
 
             loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
             cavernDry = CreateGameObject(cavernDry, new Vector3(400, 400, 400), "UserInterface/", "LoadingBackground_TealGradient_Music");
-            newCube = CreateGameObject(newCube, new Vector3(1, 1, 1), "UserInterface/", "LoadingBackground_TealGradient_Music");
+            newCube = CreateGameObject(newCube, new Vector3(0.5f, 0.5f, 0.5f), "UserInterface/", "LoadingBackground_TealGradient_Music");
 
             MelonLogger.Log("Disabling original GameObjects");
 
