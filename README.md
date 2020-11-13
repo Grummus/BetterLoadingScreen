@@ -14,3 +14,5 @@ Still Under Construction
 **Download Here:**  
 https://github.com/Grummus/BetterLoadingScreen/releases/
 
+**Track progress here: (if anyone actually bothers reading this)
+https://github.com/Grummus/BetterLoadingScreen/projects/1
