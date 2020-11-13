@@ -33,7 +33,7 @@ namespace OldLoadingScreen
 
         private GameObject cavernDry;
         private GameObject loadScreenPrefab;
-        private GameObject stars;
+        private GameObject newCube;
 
         private AssetBundle assets;
 
@@ -63,13 +63,16 @@ namespace OldLoadingScreen
             cavernDry = assets.LoadAsset_Internal("Assets/Bundle/CavernDry.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
             cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
+            newCube = assets.LoadAsset_Internal("Assets/Bundle/Cube.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
+            cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+
             CreateGameObjects();
         }
 
 
         private void CreateGameObjects()
         {
-            MelonLogger.Log("Creating Game Objects");
+            MelonLogger.Log("Finding original GameObjects");
             var UIRoot = GameObject.Find("UserInterface/MenuContent/Popups/LoadingPopup");
             var InfoPanel = GameObject.Find("UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingInfoPanel");
             var SkyCube = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingBackground_TealGradient/SkyCube_Baked");
@@ -79,10 +82,13 @@ namespace OldLoadingScreen
             var originalStartScreenSkyCube = GameObject.Find("/UserInterface/LoadingBackground_TealGradient_Music/SkyCube_Baked");
             var originalLoadingAudio = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/LoadingSound");
 
-            MelonLogger.Log("Finished Finding GameObjects");
+            MelonLogger.Log("Creating new GameObjects");
 
             loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
             cavernDry = CreateGameObject(cavernDry, new Vector3(400, 400, 400), "UserInterface/", "LoadingBackground_TealGradient_Music");
+            newCube = CreateGameObject(newCube, new Vector3(1, 1, 1), "UserInterface/", "LoadingBackground_TealGradient_Music");
+
+            MelonLogger.Log("Disabling original GameObjects");
 
             InfoPanel.active = false;
             SkyCube.active = false;
