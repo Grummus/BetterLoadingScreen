@@ -21,7 +21,7 @@ using VRC;
 using VRC.Core;
 // using VRCSDK2;
 
-[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.6.1", "Grummus")]
+[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.7.0", "Grummus")]
 [assembly: MelonGame("VRChat", "VRChat")]
 
 
@@ -101,7 +101,7 @@ namespace OldLoadingScreen
 
         private void CreateGameObjects()
         {
-            MelonLogger.Log("Finding original GameObjects");
+            MelonLogger.Msg("Finding original GameObjects");
             var UIRoot = GameObject.Find("UserInterface/MenuContent/Popups/LoadingPopup");
             var InfoPanel = GameObject.Find("UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingInfoPanel");
             var SkyCube = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingBackground_TealGradient/SkyCube_Baked");
@@ -111,13 +111,13 @@ namespace OldLoadingScreen
             var originalStartScreenSkyCube = GameObject.Find("/UserInterface/LoadingBackground_TealGradient_Music/SkyCube_Baked");
             var originalLoadingAudio = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/LoadingSound");
 
-            MelonLogger.Log("Creating new GameObjects");
+            MelonLogger.Msg("Creating new GameObjects");
 
             loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
             cavernDry = CreateGameObject(cavernDry, new Vector3(400, 400, 400), "UserInterface/", "LoadingBackground_TealGradient_Music");
             newCube = CreateGameObject(newCube, new Vector3(0.5f, 0.5f, 0.5f), "UserInterface/", "LoadingBackground_TealGradient_Music");
 
-            MelonLogger.Log("Disabling original GameObjects");
+            MelonLogger.Msg("Disabling original GameObjects");
 
             InfoPanel.active = false;
             SkyCube.active = false;
@@ -130,7 +130,7 @@ namespace OldLoadingScreen
 
         private GameObject CreateGameObject(GameObject obj, Vector3 scale, String rootDest, String parent)
         {
-            MelonLogger.Log("Creating " + obj.name);
+            MelonLogger.Msg("Creating " + obj.name);
             var UIRoot = GameObject.Find(rootDest);
             var requestedParent = UIRoot.transform.Find(parent);
             var newObject = Object.Instantiate(obj, requestedParent, false).Cast<GameObject>();
