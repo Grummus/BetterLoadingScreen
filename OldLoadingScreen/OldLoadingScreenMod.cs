@@ -39,14 +39,43 @@ namespace OldLoadingScreen
 
         public override void OnApplicationStart()
         {
-            MelonLogger.Log("ApplicationStart");
+            if (typeof(MelonLoader.MelonMod).GetMethod("VRChat_OnUiManagerInit") == null)
+                MelonLoader.MelonCoroutines.Start(GetAssembly());
+        }
+        private System.Collections.IEnumerator GetAssembly()
+        {
+            System.Reflection.Assembly assemblyCSharp = null;
+            while (true)
+            {
+                assemblyCSharp = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(assembly => assembly.GetName().Name == "Assembly-CSharp");
+                if (assemblyCSharp == null)
+                    yield return null;
+                else
+                    break;
+            }
 
+            MelonLoader.MelonCoroutines.Start(WaitForUiManagerInit(assemblyCSharp));
+        }
+        private System.Collections.IEnumerator WaitForUiManagerInit(System.Reflection.Assembly assemblyCSharp)
+        {
+
+            System.Type vrcUiManager = assemblyCSharp.GetType("VRCUiManager");
+            System.Reflection.PropertyInfo uiManagerSingleton = vrcUiManager.GetProperties().First(pi => pi.PropertyType == vrcUiManager);
+
+            while (uiManagerSingleton.GetValue(null) == null)
+                yield return null;
+
+            OnUiManagerInit();
         }
 
         public override void VRChat_OnUiManagerInit()
         {
+            OnUiManagerInit();
+        }
+
+        public void OnUiManagerInit()
+        {
             // while (ReferenceEquals(VRCAudioManager.field_Private_Static_VRCAudioManager_0, null)) yield return null;
-            MelonLogger.Log("Start init 2: electric boogaloo");
 
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OldLoadingScreen.oldloadingscreen.assetbundle"))
             using (var tempStream = new MemoryStream((int)stream.Length))
