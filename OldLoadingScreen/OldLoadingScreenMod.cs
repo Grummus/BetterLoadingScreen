@@ -21,8 +21,9 @@ using VRC;
 using VRC.Core;
 // using VRCSDK2;
 
-[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.7.0", "Grummus")]
+[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.8.0", "Grummus")]
 [assembly: MelonGame("VRChat", "VRChat")]
+[assembly: MelonOptionalDependencies("UIExpansionKit")]
 
 
 namespace OldLoadingScreen
@@ -36,6 +37,7 @@ namespace OldLoadingScreen
         private GameObject newCube;
 
         private AssetBundle assets;
+
 
         public override void OnApplicationStart()
         {
@@ -68,10 +70,10 @@ namespace OldLoadingScreen
             OnUiManagerInit();
         }
 
-        public override void VRChat_OnUiManagerInit()
-        {
-            OnUiManagerInit();
-        }
+        // public override void VRChat_OnUiManagerInit()
+        // {
+        //     OnUiManagerInit();
+        // }
 
         public void OnUiManagerInit()
         {
@@ -95,7 +97,15 @@ namespace OldLoadingScreen
             newCube = assets.LoadAsset_Internal("Assets/Bundle/Cube.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
             cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
+            OldLoadingScreenSettings.RegisterSettings();
             CreateGameObjects();
+        }
+
+        public override void OnPreferencesSaved()
+        {
+            // Put your code here you heckin dummy!
+            // Also make a decent method for finding and toggling things within loadScreenPrefab
+
         }
 
 
@@ -112,14 +122,19 @@ namespace OldLoadingScreen
             var originalLoadingAudio = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/LoadingSound");
 
             MelonLogger.Msg("Creating new GameObjects");
-
-            loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
+            if (OldLoadingScreenSettings.WarpTunnel.Value)
+            {
+                loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
+            }
             cavernDry = CreateGameObject(cavernDry, new Vector3(400, 400, 400), "UserInterface/", "LoadingBackground_TealGradient_Music");
             newCube = CreateGameObject(newCube, new Vector3(0.5f, 0.5f, 0.5f), "UserInterface/", "LoadingBackground_TealGradient_Music");
 
             MelonLogger.Msg("Disabling original GameObjects");
 
-            InfoPanel.active = false;
+            if (!OldLoadingScreenSettings.ShowLoadingMessages.Value)
+            {
+                InfoPanel.active = false;
+            }
             SkyCube.active = false;
             bubbles.active = false;
             originalLoadingAudio.active = false;
