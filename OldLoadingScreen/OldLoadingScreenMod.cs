@@ -32,9 +32,9 @@ namespace OldLoadingScreen
     {
         // private GameObject partiallyOffline;
 
-        private GameObject cavernDry;
+        // private GameObject cavernDry;
         private GameObject loadScreenPrefab;
-        private GameObject newCube;
+        // private GameObject newCube;
 
         private AssetBundle assets;
 
@@ -79,7 +79,7 @@ namespace OldLoadingScreen
         {
             // while (ReferenceEquals(VRCAudioManager.field_Private_Static_VRCAudioManager_0, null)) yield return null;
 
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OldLoadingScreen.oldloadingscreen.assetbundle"))
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OldLoadingScreen.loading.assetbundle"))
             using (var tempStream = new MemoryStream((int)stream.Length))
             {
                 stream.CopyTo(tempStream);
@@ -88,14 +88,14 @@ namespace OldLoadingScreen
                 assets.hideFlags |= HideFlags.DontUnloadUnusedAsset;
             }
 
-            loadScreenPrefab = assets.LoadAsset_Internal("Assets/Bundle/OldLoadingScreen.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
+            loadScreenPrefab = assets.LoadAsset_Internal("Assets/Bundle/LoadingBackground.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
             loadScreenPrefab.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
-            cavernDry = assets.LoadAsset_Internal("Assets/Bundle/CavernDry.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
-            cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            //cavernDry = assets.LoadAsset_Internal("Assets/Bundle/CavernDry.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
+            //cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
-            newCube = assets.LoadAsset_Internal("Assets/Bundle/Cube.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
-            cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            //newCube = assets.LoadAsset_Internal("Assets/Bundle/Cube.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
+            //cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
             OldLoadingScreenSettings.RegisterSettings();
             CreateGameObjects();
@@ -124,10 +124,11 @@ namespace OldLoadingScreen
             MelonLogger.Msg("Creating new GameObjects");
             if (OldLoadingScreenSettings.WarpTunnel.Value)
             {
+                // loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
                 loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
             }
-            cavernDry = CreateGameObject(cavernDry, new Vector3(400, 400, 400), "UserInterface/", "LoadingBackground_TealGradient_Music");
-            newCube = CreateGameObject(newCube, new Vector3(0.5f, 0.5f, 0.5f), "UserInterface/", "LoadingBackground_TealGradient_Music");
+            // cavernDry = CreateGameObject(cavernDry, new Vector3(400, 400, 400), "UserInterface/", "LoadingBackground_TealGradient_Music");
+            // newCube = CreateGameObject(newCube, new Vector3(0.5f, 0.5f, 0.5f), "UserInterface/", "LoadingBackground_TealGradient_Music");
 
             MelonLogger.Msg("Disabling original GameObjects");
 

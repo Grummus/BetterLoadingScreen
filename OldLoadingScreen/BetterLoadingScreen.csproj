@@ -103,7 +103,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="oldloadingscreen.assetbundle" />
+    <None Include="oldloadingscreen.assetbundle" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="loading.assetbundle" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
