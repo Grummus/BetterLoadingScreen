@@ -113,16 +113,21 @@ namespace OldLoadingScreen
 			var warpTunnel = loadScreenPrefab.transform.Find("Tunnel");
 			var logo = loadScreenPrefab.transform.Find("VRCLogo");
 			var InfoPanel = GameObject.Find("UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingInfoPanel");
+			var originalLoadingAudio = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/LoadingSound");
 
 
 			if (OldLoadingScreenSettings.ModSounds.Value)
 			{
 				music.gameObject.SetActive(true);
 				spaceSound.gameObject.SetActive(true);
+
+				originalLoadingAudio.SetActive(false);
 			} else
 			{
 				music.gameObject.SetActive(false);
 				spaceSound.gameObject.SetActive(false);
+
+				originalLoadingAudio.SetActive(true);
 			}
 
 			if (OldLoadingScreenSettings.WarpTunnel.Value)
