@@ -171,17 +171,14 @@ namespace OldLoadingScreen
 
 			MelonLogger.Msg("Disabling original GameObjects");
 
-			// if (!OldLoadingScreenSettings.ShowLoadingMessages.Value)
-			// {
-			//	InfoPanel.active = false;
-			// }
+			// Disable original assets from loading screen
 			SkyCube.active = false;
 			bubbles.active = false;
 			originalLoadingAudio.active = false;
 			originalStartScreenAudio.active = false;
 			originalStartScreenSkyCube.active = false;
 
-
+			// Apply any preferences
 			OnPreferencesSaved();
 
 		}
