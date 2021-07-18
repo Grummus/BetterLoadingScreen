@@ -14,13 +14,9 @@ using UnhollowerRuntimeLib;
 using MelonLoader;
 using OldLoadingScreen;
 using UnityEngine;
-// using UnityEngine.Audio;
-// using UnityEngine.UI;
-// using UnityEngine.Networking;
 using Object = UnityEngine.Object;
 using VRC;
 using VRC.Core;
-// using VRCSDK2;
 
 [assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.8.0", "Grummus")]
 [assembly: MelonGame("VRChat", "VRChat")]
@@ -31,15 +27,10 @@ namespace OldLoadingScreen
 {
 	public class OldLoadingScreenMod : MelonMod
 	{
-		// private GameObject partiallyOffline;
-
-		// private GameObject cavernDry;
 		private GameObject loadScreenPrefab;
 		private GameObject loginPrefab;
 
 		private AssetBundle assets;
-
-		// private AudioMixerGroup myUIGroup;
 
 		public override void OnApplicationStart()
 		{
@@ -69,23 +60,8 @@ namespace OldLoadingScreen
 			while (uiManagerSingleton.GetValue(null) == null)
 				yield return null;
 
-			// while (ReferenceEquals(VRCUiManager.prop_VRCUiManager_0, null)) yield return null;
-
-			// var audioManager = VRCAudioManager.field_Private_Static_VRCAudioManager_0;
-
-			// myUIGroup = new[]
-			// {
-			// 	audioManager.field_Public_AudioMixerGroup_0, audioManager.field_Public_AudioMixerGroup_1,
-			// 	audioManager.field_Public_AudioMixerGroup_2
-			// }.Single(it => it.name == "UI");
-
 			OnUiManagerInit();
 		}
-
-		// public override void VRChat_OnUiManagerInit()
-		// {
-		//     OnUiManagerInit();
-		// }
 
 		public void OnUiManagerInit()
 		{
@@ -101,9 +77,6 @@ namespace OldLoadingScreen
 
 			loadScreenPrefab = assets.LoadAsset_Internal("Assets/Bundle/LoadingBackground.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
 			loadScreenPrefab.hideFlags |= HideFlags.DontUnloadUnusedAsset;
-
-			//cavernDry = assets.LoadAsset_Internal("Assets/Bundle/CavernDry.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
-			//cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
 			loginPrefab = assets.LoadAsset_Internal("Assets/Bundle/Login.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
 			loginPrefab.hideFlags |= HideFlags.DontUnloadUnusedAsset;
