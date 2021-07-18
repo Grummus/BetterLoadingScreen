@@ -34,7 +34,7 @@ namespace OldLoadingScreen
 
 		// private GameObject cavernDry;
 		private GameObject loadScreenPrefab;
-		// private GameObject newCube;
+		private GameObject loginPrefab;
 
 		private AssetBundle assets;
 
@@ -94,8 +94,8 @@ namespace OldLoadingScreen
 			//cavernDry = assets.LoadAsset_Internal("Assets/Bundle/CavernDry.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
 			//cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
-			//newCube = assets.LoadAsset_Internal("Assets/Bundle/Cube.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
-			//cavernDry.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+			loginPrefab = assets.LoadAsset_Internal("Assets/Bundle/Login.prefab", Il2CppType.Of<GameObject>()).Cast<GameObject>();
+			loginPrefab.hideFlags |= HideFlags.DontUnloadUnusedAsset;
 
 			OldLoadingScreenSettings.RegisterSettings();
 			CreateGameObjects();
@@ -164,6 +164,7 @@ namespace OldLoadingScreen
 			var InfoPanel = GameObject.Find("UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingInfoPanel");
 			var SkyCube = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingBackground_TealGradient/SkyCube_Baked");
 			var bubbles = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingBackground_TealGradient/_FX_ParticleBubbles");
+			var loginBubbles = GameObject.Find("/UserInterface/LoadingBackground_TealGradient_Music/_FX_ParticleBubbles");
 			var StartScreen = GameObject.Find("/UserInterface/LoadingBackground_TealGradient_Music/");
 			var originalStartScreenAudio = GameObject.Find("/UserInterface/LoadingBackground_TealGradient_Music/LoadingSound");
 			var originalStartScreenSkyCube = GameObject.Find("/UserInterface/LoadingBackground_TealGradient_Music/SkyCube_Baked");
@@ -171,19 +172,22 @@ namespace OldLoadingScreen
 
 			MelonLogger.Msg("Creating new GameObjects");
 			loadScreenPrefab = CreateGameObject(loadScreenPrefab, new Vector3(400, 400, 400), "UserInterface/MenuContent/Popups/", "LoadingPopup");
-			// cavernDry = CreateGameObject(cavernDry, new Vector3(400, 400, 400), "UserInterface/", "LoadingBackground_TealGradient_Music");
+			loginPrefab = CreateGameObject(loginPrefab, new Vector3(0.5f, 0.5f, 0.5f), "UserInterface/", "LoadingBackground_TealGradient_Music");
 			// newCube = CreateGameObject(newCube, new Vector3(0.5f, 0.5f, 0.5f), "UserInterface/", "LoadingBackground_TealGradient_Music");
 
 			MelonLogger.Msg("Disabling original GameObjects");
 
-			// Disable original assets from loading screen
+			// Disable original objects from loading screen
 			SkyCube.active = false;
 			bubbles.active = false;
 			originalLoadingAudio.active = false;
+
+			// Disable original objects from login screen
 			originalStartScreenAudio.active = false;
 			originalStartScreenSkyCube.active = false;
+			loginBubbles.active = false;
 
-			// Apply any preferences
+			// Apply any preferences (yes ik this is lazy)
 			OnPreferencesSaved();
 
 		}
