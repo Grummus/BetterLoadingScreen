@@ -14,6 +14,7 @@ using UnhollowerRuntimeLib;
 using MelonLoader;
 using OldLoadingScreen;
 using UnityEngine;
+// using UnityEngine.Audio;
 // using UnityEngine.UI;
 // using UnityEngine.Networking;
 using Object = UnityEngine.Object;
@@ -38,6 +39,7 @@ namespace OldLoadingScreen
 
 		private AssetBundle assets;
 
+		// private AudioMixerGroup myUIGroup;
 
 		public override void OnApplicationStart()
 		{
@@ -67,6 +69,16 @@ namespace OldLoadingScreen
 			while (uiManagerSingleton.GetValue(null) == null)
 				yield return null;
 
+			// while (ReferenceEquals(VRCUiManager.prop_VRCUiManager_0, null)) yield return null;
+
+			// var audioManager = VRCAudioManager.field_Private_Static_VRCAudioManager_0;
+
+			// myUIGroup = new[]
+			// {
+			// 	audioManager.field_Public_AudioMixerGroup_0, audioManager.field_Public_AudioMixerGroup_1,
+			// 	audioManager.field_Public_AudioMixerGroup_2
+			// }.Single(it => it.name == "UI");
+
 			OnUiManagerInit();
 		}
 
@@ -77,7 +89,6 @@ namespace OldLoadingScreen
 
 		public void OnUiManagerInit()
 		{
-			// while (ReferenceEquals(VRCAudioManager.field_Private_Static_VRCAudioManager_0, null)) yield return null;
 
 			using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OldLoadingScreen.loading.assetbundle"))
 			using (var tempStream = new MemoryStream((int)stream.Length))
