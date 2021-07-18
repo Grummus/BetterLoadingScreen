@@ -6,8 +6,7 @@ Replaces the default VRChat world loading screen with the original warp tunnel!
 Still Under Construction
 
 ## Planned Features:
- - Ability to customize
- - Option to toggle warp tunnel effect and other things
+ - ✔ Option to toggle warp tunnel effect and other things
  - Get the old UI working!
 
 **Download Here:**  
