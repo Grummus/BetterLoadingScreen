@@ -21,10 +21,10 @@ namespace OldLoadingScreen
         {
             var category = MelonPreferences.CreateCategory("BetterLoadingScreen", "Better Loading Screen");
 
-            ShowLoadingMessages = category.CreateEntry("LoadingMessages", false, "Shows the default loading messages. (Enable for LoadingScreenPictures compatibility)");
-            WarpTunnel = category.CreateEntry("Warp Tunnel", true, "Toggles the warp tunnel and particle effect (good for reducing motion)");
-            VrcLogo = category.CreateEntry("Vrchat Logo", true, "Toggles the spinning VRChat logo");
-            ModSounds = category.CreateEntry("Mod Sounds", true, "Toggles the music and ambience from the mod");
+            ShowLoadingMessages = category.CreateEntry("LoadingMessages", false, "Show loading messages. (Enable for LoadingScreenPictures compatibility)");
+            WarpTunnel = category.CreateEntry("Warp Tunnel", true, "Toggle warp tunnel (good for reducing motion)");
+            VrcLogo = category.CreateEntry("Vrchat Logo", true, "Toggle VRChat logo");
+            ModSounds = category.CreateEntry("Mod Sounds", true, "Toggle mod music");
 
         }
         
