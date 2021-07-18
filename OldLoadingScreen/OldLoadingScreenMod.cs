@@ -139,10 +139,10 @@ namespace OldLoadingScreen
 			}
 
 			if (DateTime.Today.Month == 4 && DateTime.Now.Day == 1)
-            {
+			{
 				logo.gameObject.SetActive(false);
 				aprfools.gameObject.SetActive(true);
-            }
+			}
 
 
 		}
