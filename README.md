@@ -3,6 +3,10 @@
 
 Replaces the default VRChat world loading screen with the original warp tunnel!
 
+<p align="center">
+  <img width="" height="" src="https://github.com/Grummus/BetterLoadingScreen/blob/master/preview.gif">
+</p>
+
 Still Under Construction
 
 ## Planned Features:
