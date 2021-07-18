@@ -125,7 +125,7 @@ namespace OldLoadingScreen
 			var logo = loadScreenPrefab.transform.Find("VRCLogo");
 			var InfoPanel = GameObject.Find("UserInterface/MenuContent/Popups/LoadingPopup/3DElements/LoadingInfoPanel");
 			var originalLoadingAudio = GameObject.Find("/UserInterface/MenuContent/Popups/LoadingPopup/LoadingSound");
-
+			var aprfools = loadScreenPrefab.transform.Find("meme");
 
 			if (OldLoadingScreenSettings.ModSounds.Value)
 			{
@@ -164,6 +164,13 @@ namespace OldLoadingScreen
 			{
 				InfoPanel.SetActive(false);
 			}
+
+			if (DateTime.Today.Month == 4 && DateTime.Now.Day == 1)
+            {
+				logo.gameObject.SetActive(false);
+				aprfools.gameObject.SetActive(true);
+            }
+
 
 		}
 
