@@ -18,7 +18,7 @@ using Object = UnityEngine.Object;
 using VRC;
 using VRC.Core;
 
-[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.8.0", "Grummus")]
+[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.8.1", "Grummus")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonOptionalDependencies("UIExpansionKit")]
 
