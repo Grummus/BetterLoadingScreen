@@ -18,7 +18,7 @@ using Object = UnityEngine.Object;
 using VRC;
 using VRC.Core;
 
-[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.8.0", "Grummus")]
+[assembly: MelonInfo(typeof(OldLoadingScreenMod), "BetterLoadingScreen", "v0.8.1", "Grummus")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonOptionalDependencies("UIExpansionKit")]
 
@@ -90,6 +90,10 @@ namespace OldLoadingScreen
 			MelonLogger.Msg("Applying Preferences");
 
 			loadScreenPrefab = GameObject.Find("UserInterface/MenuContent/Popups/LoadingPopup/LoadingBackground(Clone)");
+			
+			if (loadScreenPrefab == null) //Fixes throwing null errors caused by some mods
+				return;
+				
 			var music = loadScreenPrefab.transform.Find("MenuMusic");
 			var spaceSound = loadScreenPrefab.transform.Find("SpaceSound");
 			var cube = loadScreenPrefab.transform.Find("SkyCube");
